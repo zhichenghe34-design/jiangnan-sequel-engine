@@ -12,8 +12,8 @@
 | M1 | 知识灌注:DS 蒸馏 → 卡片 JSON → 分系列入库(导入器含跨卷人物 states 合并) | ✅ |
 | M2 | 续写主循环:检索前情 → 挂 `江南.skill` → 组装 prompt →(生成)→ 校验 → 回写 | ✅ |
 | 续写测试 | 用真知识库 + 江南.skill 生成 prompt,DS 产出第317章,江南味+记忆一致均通过 | ✅ |
-| M1c | 接真 embedding(Chroma + bge/Qwen),替换内存占位向量库 | ⬜ 待做 |
-| M3 | 回写闭环脚本:把续写新章自动并回知识库(新梗概/伏笔回收/人物状态) | ⬜ 待做 |
+| M3 | 回写闭环:续写回写卡 → 解析 → 灌库(伏笔回收 / 人物状态合并 / 新卡),滚动续写 | ✅ |
+| M1c | 真语义向量库:可插拔 embedding(API / 离线占位)+ 纯 Python 余弦,零重依赖 | ✅ |
 
 当前知识库:longzu 203 张 / tianzhichi 57 张,七卷逐章,跨卷人物状态线与伏笔埋收时间线完整。
 
@@ -72,6 +72,17 @@ python examples\continue_demo.py         # 组装续写 prompt → output\续写
 
 - **DS / 大模型直接续写(当前用法)**:`continue_demo.py` 只组装 prompt,交给对话续写,不需 API key。
 - **DeepSeekClient(可选)**:`engine/deepseek_client.py` 走 API 直调,设 `DEEPSEEK_API_KEY` 即可让引擎自动生成。
+
+## 续写闭环与真语义检索
+
+- **滚动续写(M3)**:续写一章后产出"回写卡"(JSON),`python examples\apply_writeback.py <回写卡.json>` 把它并回知识库——伏笔回收、人物状态合并、新章梗概入库,下一章续写即可检索到。
+- **真语义召回(M1c,可选)**:默认向量库用字符 n-gram 占位(零依赖、能跑)。要升级成真语义,设三个环境变量指向任意 OpenAI 兼容 embedding 服务,`continue_demo.py` 自动切换:
+  ```powershell
+  $env:EMBED_MODEL       = "BAAI/bge-large-zh-v1.5"
+  $env:EMBED_BASE_URL    = "https://api.siliconflow.cn/v1"
+  $env:EMBED_API_KEY_ENV = "SILICONFLOW_API_KEY"   # 指向你存 key 的变量名
+  ```
+  不装 chromadb/torch——纯 Python 余弦,260 量级卡片足够。本地模型接法见 `engine/embedding.py` 文末。
 
 ## 许可与免责
 

@@ -19,8 +19,8 @@ KN = os.path.join(ROOT, "knowledge")
 
 # 顺序很重要:首次出场卷在前，后续卷只追加状态
 SERIES = {
-    "longzu": ["龙族I", "龙族II", "龙族III", "龙族IV", "龙族前传"],
-    "tianzhichi": ["天之炽I", "天之炽II"],
+    "longzu": ["龙族I", "龙族II", "龙族III", "龙族IV", "龙族前传", "续写_longzu"],
+    "tianzhichi": ["天之炽I", "天之炽II", "续写_tianzhichi"],
 }
 
 

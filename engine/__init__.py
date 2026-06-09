@@ -31,6 +31,8 @@ from .pipeline import (
 )
 from .engine import ContinuationIntent, ContinuationResult, ContinuationEngine
 from .ingest import IngestReport, card_from_dict, load_cards, ingest, ingest_path
+from .writeback import cards_from_writeback
+from .embedding import EmbeddingFunction, HashEmbedding, APIEmbedding, EmbeddingVectorStore
 
 __all__ = [
     "CardType",
@@ -67,4 +69,11 @@ __all__ = [
     "load_cards",
     "ingest",
     "ingest_path",
+    # M3
+    "cards_from_writeback",
+    # M1c
+    "EmbeddingFunction",
+    "HashEmbedding",
+    "APIEmbedding",
+    "EmbeddingVectorStore",
 ]

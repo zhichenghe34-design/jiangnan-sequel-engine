@@ -27,8 +27,22 @@ FOCUS_NAMES = ["路明非", "楚子航"]
 # ===============================================================
 
 
+def _make_vectorstore():
+    """默认字符 n-gram 占位;设了 EMBED_MODEL/EMBED_BASE_URL/EMBED_API_KEY_ENV
+    三个环境变量则启用真语义 embedding(M1c)。"""
+    model = os.environ.get("EMBED_MODEL")
+    base = os.environ.get("EMBED_BASE_URL")
+    keyenv = os.environ.get("EMBED_API_KEY_ENV")
+    if model and base and keyenv:
+        from engine import APIEmbedding, EmbeddingVectorStore
+        print(f"[向量库] 真语义 embedding: {model}")
+        return EmbeddingVectorStore(APIEmbedding(model, base, keyenv))
+    print("[向量库] 字符 n-gram 占位(设 EMBED_MODEL/EMBED_BASE_URL/EMBED_API_KEY_ENV 启用真语义)")
+    return InMemoryVectorStore()
+
+
 def rebuild_vectorstore(store):
-    vs = InMemoryVectorStore()
+    vs = _make_vectorstore()
     for ct in CardType:
         for c in store.by_type(ct):
             vs.add(c.id, c.embed_text(), {"type": c.card_type.value})
