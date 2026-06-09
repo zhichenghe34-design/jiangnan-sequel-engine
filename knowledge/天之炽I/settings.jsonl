@@ -1,0 +1,4 @@
+{"card_type": "setting", "id": "ST-TZC1-001", "name": "教皇国", "kind": "组织", "summary": "以罗马为核心的宗教军事政权，掌握炽天使机甲技术。与东方帝国长期对峙，内部权力斗争激烈", "constraints": ["教皇国的核心武力是炽天使机甲", "炽天使只有特定血脉者能驾驶"], "source_locator": "天之炽I·楔子"}
+{"card_type": "setting", "id": "ST-TZC1-002", "name": "炽天使机甲", "kind": "力量体系", "summary": "古代文明遗留下来的巨大人形兵器，拥有远超同时代科技的力量。每台炽天使都有独特的形态和战斗风格，似乎是生物而非纯机械", "constraints": ["驾驶员需特定血脉", "长时间驾驶消耗生命力", "每台炽天使似乎有独立意识"], "source_locator": "天之炽I·楔子"}
+{"card_type": "setting", "id": "ST-TZC1-003", "name": "帝国", "kind": "组织", "summary": "以君士坦丁堡为中心的东方大帝国，与教皇国争夺世界霸权。拥有自己的骑士团和机甲技术", "constraints": ["帝国与教皇国处于战争状态"], "source_locator": "天之炽I·第2章"}
+{"card_type": "setting", "id": "ST-TZC1-004", "name": "星历时代", "kind": "规则", "summary": "天之炽世界采用星历纪年，是一个蒸汽朋克与古代科技混合的世界。科技水平不平衡——有巨大机甲也有传统冷兵器", "constraints": ["科技树异于现实世界", "古代遗迹技术远超现代"], "source_locator": "天之炽I·楔子"}

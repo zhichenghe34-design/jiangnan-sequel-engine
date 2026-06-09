@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 运行期数据(向量库/结构库落盘)
+data/
+*.sqlite
+*.sqlite3
+*.db
+*.chroma/
+
+# 生成产物:续写 prompt / 正文
+output/
+
+# tasks/ 派发文档含本地绝对路径(原著位置)+ 临时脚本，初版暂不发布
+# (清理路径后可补发；它对"用本引擎处理其它作品"有方法论参考价值)
+tasks/
+# 注：knowledge/ 随仓库发布(二创转述卡，续写必需)，故不在此忽略
+
+# 原著原文绝不入库 —— 任何本地原文工作区都忽略
+原文/
+raw_source/
+*.原文.txt
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

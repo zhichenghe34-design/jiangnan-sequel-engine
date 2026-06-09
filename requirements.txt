@@ -1,0 +1,15 @@
+# 江南续写引擎 依赖
+
+# --- M0 核心(已可跑,零重依赖) ---
+pydantic>=2.0          # 卡片 schema;标准库 sqlite3 用作结构库,无需安装
+
+# --- M1 接入向量检索时再装(对 Python 3.14 兼容性需先验证) ---
+# chromadb>=0.5         # 向量库
+# sentence-transformers # 或直接调 bge-large-zh / Qwen-embedding
+# numpy
+
+# --- M2 DeepSeekClient (task 01) ---
+requests>=2.20         # HTTP 调用 DeepSeek API (兼容 OpenAI 格式)
+
+# 说明:M0 的向量层用 engine/vectorstore.py 的 InMemoryVectorStore 占位,
+# 字符 n-gram 相似度,无需上面被注释的重型包即可打通检索流程。
